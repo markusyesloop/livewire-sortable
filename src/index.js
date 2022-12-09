@@ -23,9 +23,9 @@ window.livewire.directive('sortable-group', (el, directive, component) => {
 
     sortable.on('sortable:stop', (el) => {
 		
-		let sourceItem = el.dragEvent.data.source.getAttribute('wire:sortable-group.item');
-		let sourceGroup = el.data.oldContainer.getAttribute('wire:sortable-group.item-group');
-		let targetGroup = el.data.newContainer.getAttribute('wire:sortable-group.item-group');
+	let sourceItem = el.dragEvent.data.source.getAttribute('wire:sortable-group.item');
+	let sourceGroup = el.data.oldContainer.getAttribute('wire:sortable-group.item-group');
+	let targetGroup = el.data.newContainer.getAttribute('wire:sortable-group.item-group');
 				
         setTimeout(() => {
             let groups = []
@@ -34,18 +34,18 @@ window.livewire.directive('sortable-group', (el, directive, component) => {
                 let items = []
                 el.querySelectorAll('[wire\\:sortable-group\\.item]').forEach((el, index) => {
                     items.push({
-						order: index + 1,
-						value: el.getAttribute('wire:sortable-group.item'),
-						item: sourceItem == e.getAttribute("wire:sortable-group.item") ? true : false,
-					})
+			order: index + 1,
+			value: el.getAttribute('wire:sortable-group.item'),
+			item: sourceItem == e.getAttribute("wire:sortable-group.item") ? true : false,
+		    })
                 })
 
                 groups.push({
                     order: index + 1,
                     value: el.getAttribute('wire:sortable-group.item-group'),
                     items: items,
-					source: sourceGroup == e.getAttribute("wire:sortable-group.item-group") ? true : false,
-					target: targetGroup == e.getAttribute("wire:sortable-group.item-group") ? true : false,					
+		    source: sourceGroup == e.getAttribute("wire:sortable-group.item-group") ? true : false,
+		    target: targetGroup == e.getAttribute("wire:sortable-group.item-group") ? true : false,					
                 })
             })
 
